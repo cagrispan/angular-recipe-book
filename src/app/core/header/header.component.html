@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default">
+
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/">Recipe Book</a>
+    </div>
+
+    <ul class="nav navbar-nav">
+    </ul>
+
+    <ul *ngIf="user | async; else noUser" class="nav navbar-nav navbar-right">
+      <li><a (click)="signOut()">Logout</a></li>
+    </ul>
+
+    <ng-template #noUser>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a routerLink="/auth" [queryParams]="{ mode: 'signUp' }">Register</a></li>
+        <li><a routerLink="/auth">Login</a></li>
+      </ul>
+    </ng-template>
+
+  </div>
+</nav>
